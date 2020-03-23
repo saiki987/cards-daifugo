@@ -1,5 +1,6 @@
 # cards-daifugo
-
+次のサイトの見た目を借りました
+https://www.p-game.jp/game219/
 ### 設定
 js/daifugo.js の中にある
 - const AUTO_MODE をtureにすると自動でゲームが進みます。
