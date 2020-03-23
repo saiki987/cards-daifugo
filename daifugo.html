@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="daifugo.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="game-board">
+      <div class="card-list" id="your-cards">
+        <img class="player1-card" alt="" width="70" height="100"
+          v-for="(card, index) in yourCards" :key="index"
+          :src="card.imageUrl"
+          :style="{ left: index*28 }"
+          v-on:click="selectCard(index)"
+          :class="{ 'selected' : card.selected }"
+          >
+      </div>
+      <div class="num-cards" id="player-0">あと
+        <span id="num0">{{ numPlayerCards[0] }}</span>枚
+      </div>
+      <div class="num-cards" id="player-1">あと
+        <span id="num1">{{ numPlayerCards[1] }}</span>枚
+      </div>
+      <div class="num-cards" id="player-2">あと
+        <span id="num2">{{ numPlayerCards[2] }}</span>枚
+      </div>
+      <div class="num-cards" id="player-3">あと
+        <span id="num3">{{ numPlayerCards[3] }}</span>枚
+      </div>
+      <div id="field">
+        <div id=field-0 :style="{ zIndex: zIndexes[0] }">
+          <img alt="" width="70" height="100"
+            v-for="(card, index) in fieldCards[0]" :src="card.imageUrl"
+            :style="{ left: index*15 }">
+        </div>
+        <div id=field-1 :style="{ zIndex: zIndexes[1] }">
+          <img alt="" width="70" height="100"
+            v-for="(card, index) in fieldCards[1]" :src="card.imageUrl"
+            :style="{ left: index*15 }">
+        </div>
+        <div id=field-2 :style="{ zIndex: zIndexes[2] }">
+          <img alt="" width="70" height="100"
+            v-for="(card, index) in fieldCards[2]" :src="card.imageUrl"
+            :style="{ left: index*15 }">
+        </div>
+        <div id=field-3 :style="{ zIndex: zIndexes[3] }">
+          <img alt="" width="70" height="100"
+            v-for="(card, index) in fieldCards[3]" :src="card.imageUrl"
+            :style="{ left: index*15 }">
+        </div>
+      </div>
+      <img v-if="gameState.markBinding" src="images/mark-binding.jpeg" alt="" id="mark-binding">
+      <img v-if="gameState.elevenBack" src="images/eleven-back.jpeg" alt="" id="eleven-back">
+      <img  v-if="gameState.kakumei" src="images/kakumei.jpeg" alt="" id="kakumei">
+      <button id="pass-button"
+        v-on:click="passYourTurn">パス</button>
+      <button id="serve-button" :disabled='disableServeButton'
+        v-on:click="serveCards">出す</button>
+    </div>
+
+    <script src="js/Card.js"></script>
+    <script src="js/Cards.js"></script>
+    <script src="js/GameRule.js"></script>
+    <script src="js/viewModel.js"></script>
+    <script src="js/daifugo.js"></script>
+  </body>
+</html>
+

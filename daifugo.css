@@ -1,0 +1,113 @@
+.hidden {
+  display: none;
+}
+
+#game-board {
+  background-image: url('images/back3.png');
+  margin: 0 auto;
+  width: 640px;
+  height: 480px;
+  position: relative;
+}
+
+#your-cards {
+  position: absolute;
+  left: 100px;
+  top: 340px;
+  height: 102px;
+  width: 400px;
+  background-color: green;
+}
+#your-cards img {
+  position: absolute;
+}
+#your-cards img.selected {
+  top: -25;
+}
+.num-cards {
+  width: 100px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background-color: aliceblue;
+  position: absolute;
+}
+#player-0 {
+  left: 510;
+  top: 315;
+}
+#player-1 {
+  left: 25;
+  top: 225;
+}
+#player-2 {
+  left: 370;
+  top: 17;
+}
+#player-3 {
+  left: 510;
+  top: 215;
+}
+#field {
+  /* position: absolute;
+  font-size: large;
+  left: 250px;
+  top: 190px;
+  border: 1px solid green; */
+}
+#field-0 {
+  position: absolute;
+  top: 220;
+  left: 285;
+}
+#field-1 {
+  position: absolute;
+  top: 170;
+  left: 250;
+}
+#field-2 {
+  position: absolute;
+  top: 120;
+  left: 285;
+}
+#field-3 {
+  position: absolute;
+  top: 170;
+  left: 315;
+}
+#field img {
+  position: absolute;
+}
+#field p:last-child {
+  font-weight: 700;
+}
+#mark-binding {
+  position: absolute;
+  top: 102;
+  left: 407;
+}
+#kakumei {
+  position: absolute;
+  top: 180;
+  left: 140;
+}
+#eleven-back {
+  position: absolute;
+  top: 250;
+  left: 409;
+}
+#pass-button {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  top: 420px;
+  left: 200px;
+}
+#serve-button {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  top: 420px;
+  left: 340px;
+}
+

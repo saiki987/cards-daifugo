@@ -1,0 +1,75 @@
+<html>
+  <head></head>
+  <body>
+    <script src="js/Card.js"></script>
+    <script src="js/Cards.js"></script>
+    <script src="js/GameRule.js"></script>
+    <div id="player-cards"></div>
+    <div id="grouped-cards"></div>
+    <p>場のカード</p>
+    <div id="field-cards"></div>
+    <p>出せるカード</p>
+    <div id="servable-cards"></div>
+    <div>出そうとするカード<span id="serving-cards"></span></div>
+  </body>
+</html>
+
+<script>
+  window.onload = function() {
+    let rule = new GameRule();
+    rule.playerCards = setPlayerCards();
+    rule.sort();
+    draw(rule.playerCards, 'player-cards');
+    drawGrouped(rule.grouping(), 'grouped-cards');
+
+    let fieldCards = [new Card('h', 13)];
+    rule.lastCards = fieldCards;
+    // rule.lastCards = [];
+    draw(fieldCards, 'field-cards');
+
+    rule.gameState.kakumei = true;
+    rule.gameState.elevenBack = true;
+    rule.gameState.markBinding = true;
+    console.log(rule.servableCardsList());
+    drawGrouped(rule.servableCardsList(), 'servable-cards');
+    drawGrouped([rule.firstServable()], "serving-cards")
+    // console.log(rule.checkCards([
+    //   new Card('s',5),
+    //   new Card('h',5),
+    // ]))
+  }
+  function setPlayerCards() {
+    let cards = new Cards();
+    cards.setCards();
+    let playerCards = [];
+    let indexes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+    for (let idx of indexes) {
+      playerCards.push(cards.cards[idx]);
+    }
+    playerCards.push(new Card('d', 6));
+    playerCards.push(new Card('d', 4));
+    return playerCards;
+  }
+
+  function draw(cards, elementId) {
+    let view = document.getElementById(elementId);
+    let html = ``;
+    for (let card of cards) {
+      html += `<img src="${card.imageUrl}" alt="">`
+    }
+    view.innerHTML = html;
+  }
+
+  function drawGrouped(grouped, elementId) {
+    let view = document.getElementById(elementId);
+    let html = ``;
+    for (let group of grouped) {
+      html += `[`
+      for (let card of group) {
+        html += `<span style="color:${card.color}">${card.text}</span>`;
+      }
+      html += `] `
+    }
+    view.innerHTML = html;
+  }
+</script>
