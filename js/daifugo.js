@@ -1,6 +1,6 @@
 
 window.onload = function() {
-  const AUTO_MODE = true;
+  const AUTO_MODE = false;
   const MAX_TURN = 100;
   const TURN_SPEED = 1000;
 
